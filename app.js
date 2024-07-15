@@ -8,6 +8,7 @@ const app = express()
 // EJS
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
+const db = require('./config/key').MongooseURI
 
 // Routes
 app.use("/", require('./routes/index')),
