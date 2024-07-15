@@ -1,9 +1,14 @@
 // const { request } = require("express");
-
+const expressLayouts = require('express-ejs-layouts')
 const express = require('express')
 
 const app = express()
 
+// EJS
+app.use(expressLayouts)
+app.set('view engine', 'ejs')
+
+// Routes
 app.use("/", require('./index')),
     app.use("/users", require('./users'))
 // app.use("/login", require('./login'))
