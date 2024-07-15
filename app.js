@@ -9,8 +9,8 @@ app.use(expressLayouts)
 app.set('view engine', 'ejs')
 
 // Routes
-app.use("/", require('./index')),
-    app.use("/users", require('./users'))
+app.use("/", require('./routes/index')),
+    app.use("/users", require('./routes/users'))
 // app.use("/login", require('./login'))
 
 
