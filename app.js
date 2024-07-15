@@ -4,8 +4,8 @@ const express = require('express')
 
 const app = express()
 
-app.use("/", require('./index'))
-app.use("/", require('./index'))
+app.use("/", require('./index')),
+    app.use("/users", require('./users'))
 
 
 const PORT = process.env.PORT || 5000
