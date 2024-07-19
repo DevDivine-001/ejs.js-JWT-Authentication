@@ -35,7 +35,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Db config
-const db = require('./config/..env').MongoURI;
+const db = require('./config/key.js').MongoURI;
 
 // Connect to Mongo
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
