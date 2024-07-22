@@ -14,7 +14,7 @@ router.get('/login', (req, res) => res.render('login'));
 router.get('/register', (req, res) => res.render('register'));
 
 // Register Handle
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
     const { name, email, password, password2 } = req.body;
     let errors = [];
 
@@ -73,6 +73,7 @@ router.post('/register', (req, res) => {
                         // saver user
                         newUser.save()
                             .then(user => {
+                                req.flash('success_msg', 'You are now registered and can log in')
                                 res.redirect('/users/login')
                             })
                             .catch(err => console.log(err))
