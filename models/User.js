@@ -1,24 +1,81 @@
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
+// // import mongoose from "mongoose"
 
-const UserSchema = new mongoose.Schema({
+// const UserSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         unique: true,
+//         required: true
+//     },
+//     email: {
+//         type: String,
+//         unique: true,
+//         required: true
+//     },
+//     password: {
+//         type: String,
+//         unique: true,
+//         required: true
+//     },
+//     date: {
+//         type: Date,
+//         default: Date.now,
+//     },
+// })
+
+// const User = mongoose.model(`User`, UserSchema)
+// module.exports = User
+
+
+
+
+const { Schema, model } = require("mongoose");
+
+const userSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        unique: true,
+        required: true
     },
     email: {
         type: String,
-        required: true,
+        required: true
     },
     password: {
         type: String,
-        required: true,
+        required: true
     },
-    date: {
-        type: Date,
-        default: Date.now,
-    },
-})
 
-const User = mongoose.model('User', UserSchema)
+}, {
+    timestamps: true,
+    versionKey: false
+});
+
+module.exports = model("Users", userSchema);
 // export default User
-module.exports = User
+
+
+// const mongoose = require('mongoose');
+
+// const userSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true,
+//     },
+//     email: {
+//         type: String,
+//         required: true,
+//         unique: true, // Ensures email uniqueness
+//     },
+//     password: {
+//         type: String,
+//         required: true,
+//     },
+//     date: {
+//         type: Date,
+//         default: Date.now,
+//     },
+// });
+
+// const User = mongoose.model('User', userSchema);
+// module.exports = User;
