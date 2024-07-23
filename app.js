@@ -37,7 +37,7 @@ const session = require('express-session')
 const app = express();
 
 // Db config
-const db = require('./config/key.js').MongoURI;
+const db = require('./config/key.js').mongoURI;
 
 // Connect to Mongo
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -62,13 +62,12 @@ app.use(session({
 app.use(flash())
 
 // Global vars
-app.use((req, res, next) => {
-    res.locals.success_mg = req.flash('success_mg')
-    res.locals.error_msg = req.flash('error_msg`')
-    next()
-
-
-})
+// app.use((req, res, next) => {
+//     res.locals.success_msg = req.flash('success_msg');
+//     res.locals.error_msg = req.flash('error_msg');
+//     res.locals.error = req.flash('error');
+//     next();
+// });
 
 // Routes
 app.use("/", require('./routes/index'));

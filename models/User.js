@@ -1,82 +1,34 @@
-// const mongoose = require('mongoose')
-// // import mongoose from "mongoose"
-
-// const UserSchema = new mongoose.Schema({
-//     name: {
-//         type: String,
-//         unique: true,
-//         required: true
-//     },
-//     email: {
-//         type: String,
-//         unique: true,
-//         required: true
-//     },
-//     password: {
-//         type: String,
-//         unique: true,
-//         required: true
-//     },
-//     date: {
-//         type: Date,
-//         default: Date.now,
-//     },
-// })
-
-// const User = mongoose.model(`User`, UserSchema)
-// module.exports = User
+const mongoose = require('mongoose')
 
 
-
-
-const { Schema, model } = require("mongoose");
-
-const userSchema = new Schema({
+const UserSchema = new mongoose.Schema({
     name: {
         type: String,
+        required: true,
+    },
+    username: {
+        type: String,
+        required: true,
         unique: true,
-        required: true
     },
     email: {
         type: String,
         required: true,
-        match: [/\S+@\S+\.\S+/, 'Please use a valid email address']
+        unique: true,
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 
-}, {
-    timestamps: true,
-    versionKey: false
-});
-
-module.exports = model("Users", userSchema);
-// export default User
+})
 
 
-// const mongoose = require('mongoose');
 
-// const userSchema = new mongoose.Schema({
-//     name: {
-//         type: String,
-//         required: true,
-//     },
-//     email: {
-//         type: String,
-//         required: true,
-//         unique: true, // Ensures email uniqueness
-//     },
-//     password: {
-//         type: String,
-//         required: true,
-//     },
-//     date: {
-//         type: Date,
-//         default: Date.now,
-//     },
-// });
+const User = mongoose.model('user', UserSchema)
 
-// const User = mongoose.model('User', userSchema);
-// module.exports = User;
+module.exports = User
